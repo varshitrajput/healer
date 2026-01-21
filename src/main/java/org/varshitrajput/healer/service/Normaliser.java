@@ -66,7 +66,7 @@ public class Normaliser {
 		);
 
 		healerData.setAnalogInput1(
-				getDouble(data, "ain") != null && getDouble(data, "ain") > 0
+				getDouble(data, "ain.1") != null && getDouble(data, "ain.1") > 0
 		);
 
 		healerData.setDigitalInput1(
@@ -74,14 +74,14 @@ public class Normaliser {
 		);
 
 		healerData.setDigitalInput2(
-				getBoolean(data, "dout.1")
+				getBoolean(data, "din.2")
 		);
 
 		healerData.setTimestamp(
 				getLong(data, "timestamp")
 		);
 
-		healerData.setIsEnriched(false);
+		healerData.setIsEnriched(true);
 
 		return healerData;
 	}
