@@ -52,7 +52,7 @@ public class Normaliser {
 
 		HealerData healerData = new HealerData();
 
-		healerData.setDeviceId(String.valueOf(data.get("device.id")));
+		healerData.setDeviceId(String.valueOf(data.get("ident")));
 
 		healerData.setLatitude(getDouble(data, "position.latitude"));
 		if (healerData.getLatitude() == null) {
