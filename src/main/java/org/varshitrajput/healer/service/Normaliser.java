@@ -35,7 +35,7 @@ public class Normaliser {
 
 			for (Map<String, Object> data : payload) {
 				HealerData healerData = buildHealerData(data);
-				batch.add(healerData);
+				if (healerData != null) batch.add(healerData);
 			}
 
 			healerDataRepository.saveAll(batch);
@@ -52,9 +52,12 @@ public class Normaliser {
 
 		HealerData healerData = new HealerData();
 
-		healerData.setDeviceId(String.valueOf(data.get("ident")));
+		healerData.setDeviceId(String.valueOf(data.get("device.id")));
 
 		healerData.setLatitude(getDouble(data, "position.latitude"));
+		if (healerData.getLatitude() == null) {
+			return null;
+		}
 		healerData.setLongitude(getDouble(data, "position.longitude"));
 		healerData.setSpeed(getDouble(data, "position.speed"));
 
